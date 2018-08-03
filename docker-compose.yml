@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  mongodb:
+    image: mongo:xenial
+    restart: always
+    ports: 
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+  auth-project:
+    build:
+      context: .
+      target: '${BUILD_TARGET}'
+    depends_on:
+      - mongodb
+    ports:
+      - '8080:8080'
+    volumes:
+      - '.:/usr/src/auth-project'
+      - 'dependencies:/usr/src/auth-project/node_modules'
+    env_file:
+      - '.env'
+    environment: 
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+
+
+volumes:
+  db:
+  cache:
+  dependencies:
