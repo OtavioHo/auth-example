@@ -7,7 +7,7 @@ var mongoURI = "mongodb://mongodb:27017/test";
 var MongoDB = mongoose.connect(mongoURI);
 
 app.get('/', function(req, res) {
-    res.send('Hello! The API is at http://localhost:' + port + '/api');
+    res.send('Ola! The API is at http://localhost:' + port + '/api');
 });
 
 app.listen(port);

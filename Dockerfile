@@ -32,13 +32,14 @@ ENV NODE_ENV=development
 COPY package.json yarn.lock ./
 
 # Install dependencies
+RUN npm install -g nodemon
 RUN yarn install
 
 # Copy the application code to the build path
 COPY . .
 
 # Define the the default command to execute when container is run
-CMD ["npm", "start"]
+CMD ["nodemon", "index.js"]
 
 ################################################################################
 #                               BUILDER IMAGE                                  #
