@@ -1,13 +1,16 @@
-var express = require('express');
-var app = express();
-var mongoose = require('mongoose');
-var port = process.env.PORT || 8080;
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const bodyParser  = require('body-parser');
+const morgan = require('morgan');
 
-var mongoURI = "mongodb://mongodb:27017/test";
-var MongoDB = mongoose.connect(mongoURI);
+const port = process.env.PORT || 8080;
+
+const mongoURI = "mongodb://mongodb:27017/test";
+const MongoDB = mongoose.connect(mongoURI);
 
 app.get('/', function(req, res) {
-    res.send('Ola! The API is at http://localhost:' + port + '/api');
+    res.send('Olar! The API is at http://localhost:' + port + '/api');
 });
 
 app.listen(port);
